@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsersWithRole } from 'src/app/models/users.model';
 import { DashboardService } from 'src/app/services/dashboard.service';
@@ -10,11 +10,15 @@ import { DashboardService } from 'src/app/services/dashboard.service';
   styleUrls: ['login.component.scss'],
 })
 export class LoginComponent {
-  userName = new FormControl([Validators.required]);
-  password = new FormControl([Validators.required]);
+  loginForm = this.fb.group({
+    userName: ['', Validators.required],
+    password: ['', Validators.required],
+  });
+
   userNameErrorMessage = '';
   passwordErrorMessage = '';
   constructor(
+    private fb: FormBuilder,
     private router: Router,
     private dashboardService: DashboardService
   ) {}
@@ -36,13 +40,13 @@ export class LoginComponent {
         let isusername = this.verifyUser(
           result,
           'username',
-          this.userName.value
+          this.loginForm.get('userName')?.value
         );
         if (isusername) {
           let isLoginObj = this.verifyUser(
             result,
             'password',
-            this.password.value
+            this.loginForm.get('password')?.value
           );
           if (isLoginObj) {
             const isAdmin = isLoginObj.role === 'admin' ? true : false;
@@ -54,12 +58,12 @@ export class LoginComponent {
             this.router.navigate(['/dashboard']);
           } else {
             this.userNameErrorMessage = '';
-            this.password.setErrors({ invalid: true });
+            this.loginForm.get('password')?.setErrors({ invalid: true });
             this.passwordErrorMessage = 'Password is Invalid';
           }
         } else {
           this.passwordErrorMessage = '';
-          this.userName.setErrors({ invalid: true });
+          this.loginForm.get('userName')?.setErrors({ invalid: true });
           this.userNameErrorMessage = 'username is Invalid';
         }
       }),

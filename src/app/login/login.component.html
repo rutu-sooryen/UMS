@@ -2,21 +2,25 @@
 <div class="container">
   <mat-card class="login">
     <h1>UMS Login</h1>
-    <div>
+    <form [formGroup]="loginForm">
       <mat-form-field appearance="outline" class="form-field">
         <mat-label>Enter your userName</mat-label>
         <input
           matInput
           type="text"
           placeholder="Email / Username"
-          [formControl]="userName"
+          formControlName="userName"
           required
         />
         <mat-error
-          *ngIf="!userName.valid && (userName.touched || userName.dirty)"
+          *ngIf="
+            !loginForm.get('userName')?.valid &&
+            (loginForm.get('userName')?.touched ||
+              loginForm.get('userName')?.dirty)
+          "
           >{{ userNameErrorMessage }}
         </mat-error>
-        <mat-error *ngIf="userName.hasError('required')"
+        <mat-error *ngIf="loginForm.get('userName')?.hasError('required')"
           >This field is required</mat-error
         ></mat-form-field
       ><br />
@@ -27,17 +31,21 @@
           type="password"
           matInput
           placeholder="Password"
-          [formControl]="password"
+          formControlName="password"
           required
         />
         <mat-error
-          *ngIf="!password.valid && (password.touched || password.dirty)"
+          *ngIf="
+            !loginForm.get('password')?.valid &&
+            (loginForm.get('password')?.touched ||
+              loginForm.get('password')?.dirty)
+          "
           >{{ passwordErrorMessage }}
         </mat-error>
-        <mat-error *ngIf="password.hasError('required')"
+        <mat-error *ngIf="loginForm.get('password')?.hasError('required')"
           >This field is required</mat-error
         >
-        <mat-error *ngIf="password.hasError('pattern')"
+        <mat-error *ngIf="loginForm.get('password')?.hasError('pattern')"
           >Must be your full name</mat-error
         > </mat-form-field
       ><br /><br />
@@ -45,11 +53,14 @@
       <button
         mat-raised-button
         color="primary"
-        [disabled]="userName.invalid && password.invalid"
+        [disabled]="
+          loginForm.get('userName')?.invalid &&
+          loginForm.get('password')?.invalid
+        "
         (click)="verifyLogin()"
       >
         Submit
       </button>
-    </div>
+    </form>
   </mat-card>
 </div>
