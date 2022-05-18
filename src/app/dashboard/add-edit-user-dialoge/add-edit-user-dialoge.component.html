@@ -1,0 +1,52 @@
+<form class="example-form" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <h1 mat-dialog-title>{{ title }}</h1>
+  <div mat-dialog-content>
+    <mat-form-field>
+      <mat-label>Enter Name</mat-label> <br />
+      <input
+        [readonly]="isDisabledInput !== 'true'"
+        matInput
+        placeholder="Enter Your Name"
+        formControlName="name"
+        autocomplete="off"
+        required
+      />
+      <mat-error *ngIf="!userForm.valid">
+        Name is <strong>required</strong></mat-error
+      >
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Enter Position</mat-label> <br />
+      <input
+        matInput
+        placeholder="Ex. Full stack Development"
+        formControlName="position"
+        required
+      />
+      <mat-error *ngIf="!userForm.valid">
+        Position is <strong>required</strong></mat-error
+      >
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Enter Department</mat-label> <br />
+      <mat-select formControlName="department" required>
+        <mat-option value="Design">Design</mat-option>
+        <mat-option value="Development">Development</mat-option>
+        <mat-option value="Tester">Tester</mat-option>
+      </mat-select>
+      <mat-error *ngIf="!userForm.valid">
+        Department is <strong>required</strong></mat-error
+      >
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions class="add-user">
+    <button mat-stroked-button cdkFocusInitial (click)="onCancel()">
+      Cancel
+    </button>
+    <button class="submit" [disabled]="!userForm.valid" mat-button>
+      Submit
+    </button>
+  </div>
+</form>

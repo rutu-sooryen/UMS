@@ -1,0 +1,41 @@
+<div class="container">
+  <div *ngFor="let user of userList">
+    <mat-card>
+      <h2>{{ user.name }}</h2>
+      <mat-card-subtitle> {{ user.position }} </mat-card-subtitle>
+      <mat-chip-list aria-label="Fish selection">
+        <mat-chip
+          selected
+          [ngClass]="{
+            red: user.department === 'Development',
+            green: user.department === 'Design'
+          }"
+          >{{ user.department }}</mat-chip
+        >
+      </mat-chip-list>
+      <button
+        mat-stroked-button
+        class="edit-user"
+        (click)="editUserDialog(user)"
+      >
+        Edit
+      </button>
+      <button
+        *ngIf="isAdmin === 'true'"
+        mat-stroked-button
+        class="delete-user"
+        (click)="deleteuser(user)"
+      >
+        delete
+      </button>
+    </mat-card>
+  </div>
+</div>
+<div style="text-align: center">
+  <div class="empty" *ngIf="userList?.length === 0">
+    <mat-icon aria-hidden="false" aria-label="Example  report_problem icon">
+      report_problem
+    </mat-icon>
+    <p>Please add users first to see the list!</p>
+  </div>
+</div>

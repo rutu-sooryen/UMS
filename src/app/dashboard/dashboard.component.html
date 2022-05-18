@@ -1,0 +1,27 @@
+<div class="main">
+  <div class="header">
+    <mat-toolbar>
+      <span>User Management System</span>
+      <div class="button-logout">
+        <button mat-stroked-button class="add-user" (click)="logOut()">
+          Logout
+        </button>
+      </div>
+    </mat-toolbar>
+  </div>
+  <div class="container">
+    <div class="toolbar">
+      <h1>User List</h1>
+      <div class="button-right" *ngIf="isAdmin === 'true'">
+        <button mat-stroked-button class="add-user" (click)="addUserDialog()">
+          <mat-icon aria-hidden="false" aria-label="Example add icon"
+            >add</mat-icon
+          >
+          Add User
+        </button>
+      </div>
+    </div>
+    <hr />
+    <app-user-list [userList]="userList"></app-user-list>
+  </div>
+</div>

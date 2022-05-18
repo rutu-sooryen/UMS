@@ -1,0 +1,23 @@
+.main {
+  mat-toolbar {
+    justify-content: space-between;
+  }
+  .container {
+    width: 80%;
+    margin: auto;
+    .toolbar {
+      margin-top: 20px;
+      justify-content: space-between;
+      display: flex;
+
+      h1 {
+        font-size: 30px;
+      }
+
+      .add-user {
+        border-color: darkcyan;
+        color: darkcyan;
+      }
+    }
+  }
+}

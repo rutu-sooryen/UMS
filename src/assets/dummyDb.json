@@ -1,0 +1,49 @@
+{
+  "userList": [
+    {
+      "id": 1,
+      "name": "Rutu Dave",
+      "position": "Software developer",
+      "department": "Development"
+    },
+    {
+      "id": 2,
+      "name": "Shalin choksi",
+      "position": "Software developer",
+      "department": "Tester"
+    },
+    {
+      "id": 3,
+      "emp_number": "3",
+      "name": "manoj manani",
+      "position": "Sr. Software developer",
+      "department": "Development"
+    },
+    {
+      "id": 4,
+      "emp_number": "4",
+      "name": "Riya Sankesra",
+      "position": "Software developer",
+      "department": "Development"
+    },
+    {
+      "id": 6,
+      "emp_number": "6",
+      "name": "Rashmin mevada",
+      "position": "sr. Software developer",
+      "department": "Tester"
+    }
+  ],
+  "usersWithRole": [
+    {
+      "username": "admin",
+      "password": "admin123",
+      "role": "admin"
+    },
+    {
+      "username": "rutu",
+      "password": "rutu123",
+      "role": "user"
+    }
+  ]
+}

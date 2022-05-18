@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+
+  * {
+    flex: 0 0 31.3333%;
+    margin: 10px;
+  }
+  .green {
+    background-color: green;
+  }
+  .red {
+    background-color: rgb(167, 28, 28);
+  }
+  .edit-user {
+    border-color: darkcyan;
+    color: darkcyan;
+  }
+  .delete-user {
+    border-color: red;
+    color: red;
+  }
+  mat-card {
+    height: 200px;
+    border: 1px solid lightgray;
+
+    h2 {
+      margin-bottom: 0px;
+    }
+
+    mat-card-subtitle {
+      margin: 0px 10px;
+    }
+    .mat-standard-chip {
+      border-radius: 5px;
+      flex: 0;
+      min-height: 25px;
+    }
+  }
+}
+.empty {
+  text-align: center;
+  color: red;
+  margin: 40px;
+  display: inline-flex;
+  p {
+    margin: 5px 0px 0px 4px;
+  }
+}

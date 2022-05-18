@@ -1,0 +1,55 @@
+<div id="bg"></div>
+<div class="container">
+  <mat-card class="login">
+    <h1>UMS Login</h1>
+    <div>
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Enter your userName</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Email / Username"
+          [formControl]="userName"
+          required
+        />
+        <mat-error
+          *ngIf="!userName.valid && (userName.touched || userName.dirty)"
+          >{{ userNameErrorMessage }}
+        </mat-error>
+        <mat-error *ngIf="userName.hasError('required')"
+          >This field is required</mat-error
+        ></mat-form-field
+      ><br />
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Enter your password</mat-label>
+        <input
+          type="password"
+          matInput
+          placeholder="Password"
+          [formControl]="password"
+          required
+        />
+        <mat-error
+          *ngIf="!password.valid && (password.touched || password.dirty)"
+          >{{ passwordErrorMessage }}
+        </mat-error>
+        <mat-error *ngIf="password.hasError('required')"
+          >This field is required</mat-error
+        >
+        <mat-error *ngIf="password.hasError('pattern')"
+          >Must be your full name</mat-error
+        > </mat-form-field
+      ><br /><br />
+
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="userName.invalid && password.invalid"
+        (click)="verifyLogin()"
+      >
+        Submit
+      </button>
+    </div>
+  </mat-card>
+</div>
