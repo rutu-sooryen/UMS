@@ -1,10 +1,10 @@
 import {
   HttpClient,
   HttpClientModule,
-  HTTP_INTERCEPTORS,
+  HTTP_INTERCEPTORS
 } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
@@ -43,7 +43,6 @@ import { AuthInterceptorService } from 'src/app/services/auth-interceptor.servic
     MatIconModule,
     MatCardModule,
     MatFormFieldModule,
-    FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
     MatInputModule,
