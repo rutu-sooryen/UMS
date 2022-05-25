@@ -37,7 +37,7 @@ export class DashboardComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      if (result.name !== '') {
+      if (result.name !== '' && result.name !== null) {
         this.dashboardService.addUser(result).subscribe((res) => {
           if (res) {
             this.getUserList();

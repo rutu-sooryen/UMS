@@ -42,6 +42,7 @@ export class AddEditUserDialogeComponent implements OnInit {
   }
 
   onCancel(): void {
+    this.userForm.reset();
     this.dialogRef.close();
   }
 }
